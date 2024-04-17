@@ -41,25 +41,25 @@ def serial_read_data(ser):
             return -1
     return 0
 
-relay1_ON  = [1, 6, 0, 0, 0, 255, 201, 138]
-relay1_OFF = [1, 6, 0, 0, 0, 0, 202, 27]
+relay2_ON  = [2, 6, 0, 0, 0, 255, 201, 185]
+relay2_OFF = [2, 6, 0, 0, 0, 0, 137, 249]
 
-def setDevice1(state):
+def setDevice2(state):
     if state == True:
-        print(relay1_ON, "ON")
-        ser.write(relay1_ON)
+        print(relay2_ON, "ON")
+        ser.write(relay2_ON)
     else:
-        print(relay1_ON, "ON")
-        ser.write(relay1_OFF)
+        print(relay2_OFF, "OFF")
+        ser.write(relay2_OFF)
     time.sleep(1)
     print(serial_read_data(ser))
     
    
 
 while True:
-    setDevice1(True)
+    setDevice2(True)
     time.sleep(2)
-    setDevice1(False)
+    setDevice2(False)
     time.sleep(2)
 
 
