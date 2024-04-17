@@ -15,13 +15,14 @@ def getPort():
             commPort = (splitPort[0])
     return commPort
 
-portName = "/dev/ttyUSB2"
+portName = getPort()
 print(portName)
 
 
 
 try:
-    ser = serial.Serial(port=portName, baudrate=115200)
+    ser = serial.Serial(port=getPort(), baudrate=9600)
+    print(ser)
     print("Open successfully")
 except:
     print("Can not open the port")
