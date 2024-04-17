@@ -15,7 +15,7 @@ def getPort():
             commPort = (splitPort[0])
     return commPort
 
-portName = getPort()
+portName = "/dev/ttyUSB2"
 print(portName)
 
 
