@@ -15,7 +15,7 @@ def getPort():
             commPort = (splitPort[0])
     return commPort
 
-portName = getPort
+portName = getPort()
 print(portName)
 
 
@@ -25,25 +25,8 @@ try:
     print("Open successfully")
 except:
     print("Can not open the port")
-
-relay1_ON  = [0, 6, 0, 0, 0, 255, 200, 91]
-relay1_OFF = [0, 6, 0, 0, 0, 0, 136, 27]
-
-def setDevice1(state):
-    if state == True:
-        ser.write(relay1_ON)
-    else:
-        ser.write(relay1_OFF)
-    time.sleep(1)
-    print(serial_read_data(ser))
-
-while True:
-    setDevice1(True)
-    time.sleep(2)
-    setDevice1(False)
-    time.sleep(2)
-
-
+    
+    
 def serial_read_data(ser):
     bytesToRead = ser.inWaiting()
     if bytesToRead > 0:
@@ -57,6 +40,29 @@ def serial_read_data(ser):
         else:
             return -1
     return 0
+
+relay1_ON  = [1, 6, 0, 0, 0, 255, 201, 138]
+relay1_OFF = [1, 6, 0, 0, 0, 0, 202, 27]
+
+def setDevice1(state):
+    if state == True:
+        print(relay1_ON, "ON")
+        ser.write(relay1_ON)
+    else:
+        print(relay1_ON, "ON")
+        ser.write(relay1_OFF)
+    time.sleep(1)
+    print(serial_read_data(ser))
+    
+   
+
+while True:
+    setDevice1(True)
+    time.sleep(2)
+    setDevice1(False)
+    time.sleep(2)
+
+
 
 soil_temperature =[1, 3, 0, 6, 0, 1, 100, 11]
 def readTemperature():
