@@ -33,6 +33,8 @@ def serial_read_data(ser):
     if bytesToRead > 0:
         out = ser.read(bytesToRead)
         data_array = [b for b in out]
+        while data_array[0] == 0:
+            data_array.pop(0)
         print(data_array)
         if len(data_array) >= 7:
             array_size = len(data_array)
